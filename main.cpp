@@ -7,7 +7,11 @@
 int main() {
 	DWORD procId = GetProcId(L"ac_client.exe");
 
+	std::cout << "ProcId = " << procId << std::endl;
+
 	uintptr_t moduleBase = GetModuleBaseAddress(procId, L"ac_client.exe");
+
+	std::cout << "Module Base = 0x" << std::hex << moduleBase << std::endl;
 
 	HANDLE hProcess = 0;
 	hProcess = OpenProcess(PROCESS_ALL_ACCESS, NULL, procId);
