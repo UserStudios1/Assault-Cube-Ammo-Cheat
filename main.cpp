@@ -20,12 +20,13 @@ int main() {
 
 	std::cout << "DynamicPtrBaseAddr = " << "0x" << std::hex << std::uppercase << dynamicPtrBaseAddr << std::endl;
 
-	std::vector<unsigned int> ammoOffsets = { 0x364, 0x14, 0x0 };
-	uintptr_t ammoAddr = FindDMAAddy(hProcess, dynamicPtrBaseAddr, ammoOffsets);
-
-	std::cout << "ammoAddr = " << "0x" << std::hex << std::uppercase << ammoAddr << std::endl;
 
 	while (true) {
+		std::vector<unsigned int> ammoOffsets = { 0x364, 0x14, 0x0 };
+		uintptr_t ammoAddr = FindDMAAddy(hProcess, dynamicPtrBaseAddr, ammoOffsets);
+
+		std::cout << "ammoAddr = " << "0x" << std::hex << std::uppercase << ammoAddr << std::endl;
+
 		int ammoValue = 0;
 		ReadProcessMemory(hProcess, (BYTE*)ammoAddr, &ammoValue, sizeof(ammoValue), nullptr);
 
